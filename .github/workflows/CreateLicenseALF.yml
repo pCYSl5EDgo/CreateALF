@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        unity-tag: [2018.4.9f1-webgl, 2019.2.5f1-webgl]
+        unity-tag: [2018.4.9f1, 2019.2.5f1]
     
-    container: docker://gableroux/unity3d:${{ matrix.unity-tag }}
+    container: docker://gableroux/unity3d:${{ matrix.unity-tag }}-webgl
     
     steps:
     - run: mkdir artifact
