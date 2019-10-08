@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         unity-version: [2018.4.9f1, 2019.2.5f1]
-    container: docker://gableroux/unity3d:${{ unity-version }}-webgl
+    container: docker://gableroux/unity3d:${{ matrix.unity-version }}-webgl
     
     steps:
     - name: Create Manual Activation File
