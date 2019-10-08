@@ -11,13 +11,9 @@ jobs:
     steps:
     - run: mkdir artifact
     - run: |
-        ls -l /opt/Unity/Editor/
         /opt/Unity/Editor/Unity -quit -batchmode -nographics -logfile -createManualActivationFile || exit 0
-        ls -l /opt/Unity/Editor/
-        ls -l
-        cat Unity_v2018.4.9f1.alf
+    - run: |
         cp "Unity_v2018.4.9f1.alf" artifact
-        ls -l artifact
     - uses: actions/upload-artifact@master
       with:
         name: 2018.4.9f1
