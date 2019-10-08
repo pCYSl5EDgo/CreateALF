@@ -6,15 +6,19 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: docker://gableroux/unity3d:2018.4.9f1-webgl
+    strategy:
+      matrix:
+        unity-version: [2018.4.9f1, 2019.2.5f1]
+    container: docker://gableroux/unity3d:${{ unity-version }}-webgl
     
     steps:
-    - run: mkdir artifact
-    - run: |
-        /opt/Unity/Editor/Unity -quit -batchmode -nographics -logfile -createManualActivationFile || exit 0
-    - run: |
-        cp "Unity_v2018.4.9f1.alf" artifact
+    - name: Create Manual Activation File
+      run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -logfile -createManualActivationFile || exit 0
+    - name: Copy To Artifact
+      run: |
+        mkdir artifact
+        cp Unity_v${{ unity-version }}.alf artifact
     - uses: actions/upload-artifact@master
       with:
-        name: 2018.4.9f1
+        name: ${{ unity-version }}
         path: artifact
