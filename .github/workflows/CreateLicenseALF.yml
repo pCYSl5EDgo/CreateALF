@@ -16,7 +16,9 @@ jobs:
     - run: mkdir artifact
     - run: |
         /opt/Unity/Editor/Unity -quit -batchmode -nographics -logfile -createManualActivationFile || exit 0
+        ls -l
         cp "Unity_v$UNITY_VERSION.alf" artifact
+        ls -l artifact
       env:
         UNITY_VERSION: ${{ matrix.unity-tag }}
     - uses: actions/upload-artifact@master
