@@ -17,8 +17,8 @@ jobs:
     - name: Copy To Artifact
       run: |
         mkdir artifact
-        cp Unity_v${{ unity-version }}.alf artifact
+        cp Unity_v${{ matrix.unity-version }}.alf artifact
     - uses: actions/upload-artifact@master
       with:
-        name: ${{ unity-version }}
+        name: ${{ matrix.unity-version }}
         path: artifact
