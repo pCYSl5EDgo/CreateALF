@@ -18,7 +18,7 @@ jobs:
         - 2020.1.0a14
     
     steps:
-    - uses: pCYSl5EDgo/setup-unity@v1
+    - uses: pCYSl5EDgo/setup-unity@master
       with:
         unity-version: ${{ matrix.unity-version }}
     - name: Create Manual Activation File
